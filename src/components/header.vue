@@ -1,4 +1,14 @@
 <script setup>
+import { ref, watch } from 'vue';
+const props = defineProps({
+  auth: Object
+})
+
+const propValue = ref(props.auth);
+
+watch(() => props.auth, (newValue) => {
+  propValue.value = newValue;
+});
 
 </script>
 
@@ -9,8 +19,9 @@
         <RouterLink to="/admin">
           <h3 class="self-center text-2xl font-extrabold whitespace-nowrap text-blue-500">Books - Admin</h3>
         </RouterLink>
-        <img class="w-6 h-6 me-10 rounded-full"
-            src="https://i.pinimg.com/564x/46/64/d0/4664d0a6eca36bcd2186570a0cc343ab.jpg" alt="avatar">
+        <img v-if="propValue"
+          class="w-10 h-10 me-10 rounded-full"
+        :src="`http://localhost:3000/${props.auth[0].img}`" alt="avatar">
       </div>
     </nav>
   </div>

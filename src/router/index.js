@@ -17,24 +17,36 @@ const router = createRouter({
     {
       path: '/book/:id',
       name: 'bookedit',
-      component: () => import('../views/BookEdit.vue')
+      props:true,
+      component: () => import('../views/EditBook.vue')
     },
     {
       path: '/book/add',
       name: 'bookadd',
-      component: () => import('../views/BookAdd.vue')
+      component: () => import('../views/AddBook.vue')
     },
     {
       path: '/profile/:id',
       name: 'profile',
+      props:true,
       component: () => import('../views/Profile.vue')
+    },
+    {
+      path: '/user',
+      name: 'adduser',
+      component: () => import('../views/AddUser.vue')
     },
     {
       path: '/editprofile/:id',
       name: 'editprofile',
       component: () => import('../views/EditProfile.vue')
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        name: "notfound",
+        component: () => import("@/views/NotFound.vue"),
     }
   ]
 })
 
-export default router
+export default router;

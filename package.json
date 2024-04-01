@@ -12,8 +12,10 @@
     "apexcharts": "^3.48.0",
     "axios": "^1.6.8",
     "flowbite": "^2.3.0",
+    "vee-validate": "^4.12.6",
     "vue": "^3.4.15",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.3",
