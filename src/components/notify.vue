@@ -9,22 +9,6 @@
         </h1>
         <div>
             <ul
-                class="text-sm font-medium text-center text-gray-500 rounded-s-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
-                <li class="w-full focus-within:z-10">
-                    <div class="inline-block hover:cursor-pointer w-full p-4 rounded-tl-lg bg-white border-r border-gray-200 dark:border-gray-700 hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-                        aria-current="page">
-                        Chờ duyệt
-                    </div>
-                </li>
-                <li class="w-full focus-within:z-10">
-                    <div
-                        class="inline-block hover:cursor-pointer w-full p-4 rounded-tr-lg bg-white border-r border-gray-200 dark:border-gray-700 hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700">
-                        Đã duyệt
-                    </div>
-                </li>
-            </ul>
-
-            <ul
                 class="p-4 divide-y divide-gray-200 border dark:divide-gray-700 bg-gray-100 dark:bg-gray-900 rounded-b-md dark:border-gray-600">
                 <li
                     class="flex justify-between p-4 hover:bg-blue-100 hover:cursor-pointer dark:bg-gray-800 dark:hover:bg-gray-700">
