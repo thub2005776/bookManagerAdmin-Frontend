@@ -44,7 +44,7 @@ onMounted(() => {
         <div class="lg:flex lg:gap-6 p-2 dark:bg-gray-800 ">
             <div class="text-center">
                 <img class="mx-auto w-32 h-32 md:w-52 md:h-52 rounded-full p-1 border border-blue-300 dark:border-gray-600"
-                    src="https://i.pinimg.com/736x/f5/a3/8d/f5a38ddc194c4717bcea5190759fd206.jpg" alt="avatar">
+                    :src="`http://localhost:3000/${user.img}`" alt="avatar">
                 <p class="mb-2">{{ user.name }}</p>
                 <p class="mb-3 dark:text-gray-400">{{ user.email }}</p>
                 <router-link :to="`/editprofile/${user._id}`">

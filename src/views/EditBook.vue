@@ -50,7 +50,6 @@ const handleSubmit = async (e) => {
         'stored': stored.value,
     }
 
-    let fileStatus = 0;
     if (file) {
         const data = new FormData();
         data.append("file", file);
@@ -59,7 +58,6 @@ const handleSubmit = async (e) => {
             .then(res => {
                 if (res.status === 200) {
                     console.log(res.data);
-                    fileStatus = 200;
                 }
             })
             .catch(err => console.log(err))
