@@ -14,7 +14,7 @@ const handleSubmit = (e) => {
   };
 
   axios.defaults.withCredentials = true;
-  axios.post(import.meta.env.VITE_SERVER_URL + 'log/ad/login', values)
+  axios.post(import.meta.env.VITE_SERVER_URL + 'api/log/ad/login', values)
     .then(res => {
       if (res.data.permission === "admin") {
           router.push('/admin');

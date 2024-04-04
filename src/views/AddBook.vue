@@ -33,7 +33,7 @@ const handleSubmit = (e) => {
     data.append("file", file);
 
     values.img = file.name;
-    axios.post(import.meta.env.VITE_SERVER_URL + 'file/upload', data)
+    axios.post(import.meta.env.VITE_SERVER_URL + 'api/file/upload', data)
         .then(res => {
             if (res.status === 200) {
                 console.log(res.data);
@@ -42,7 +42,7 @@ const handleSubmit = (e) => {
         })
         .catch(err => console.log(err))
 
-    axios.post(import.meta.env.VITE_SERVER_URL + 'books', values)
+    axios.post(import.meta.env.VITE_SERVER_URL + 'api/books', values)
         .then(res => {
             if (res.status === 200 && fileStatus === 200) {
                 alert("Thêm thành công!");

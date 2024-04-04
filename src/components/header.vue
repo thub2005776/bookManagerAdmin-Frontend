@@ -14,7 +14,7 @@ const props = defineProps({
         <RouterLink to="/admin">
           <h3 class="self-center text-2xl font-extrabold whitespace-nowrap text-blue-500">Books - Admin</h3>
         </RouterLink>
-        <img v-if="props.auth"
+        <img v-if="!props"
           class="w-10 h-10 me-10 rounded-full"
         :src="`http://localhost:3000/${props.auth[0].img}`" alt="avatar">
       </div>

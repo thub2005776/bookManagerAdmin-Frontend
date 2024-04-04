@@ -1,16 +1,19 @@
 <script setup>
 import { SideBar, Card, Notify, Statitics } from '../components'
 import { ref } from 'vue';
+// import UsersService from './services/user.service';
 const users = ref([]);
 
-axios.get(import.meta.env.VITE_SERVER_URL + `users`)
+// users.value = await userService.getAll();
+// console.log(users.value);
+axios.get(import.meta.env.VITE_SERVER_URL + `api/users`)
    .then(res =>
       users.value = res.data
    )
    .catch(err => console.log(err))
 
 const books = ref([]);
-axios.get(import.meta.env.VITE_SERVER_URL + `books`)
+axios.get(import.meta.env.VITE_SERVER_URL + `api/books`)
    .then(res =>
       books.value = res.data
    )
@@ -30,6 +33,7 @@ axios.get(import.meta.env.VITE_SERVER_URL + `books`)
 
 <script>
 import axios from 'axios';
+import userService from '@/services/user.service';
 export default {
 
    data() {

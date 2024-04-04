@@ -1,7 +1,7 @@
 import createApiClient from './api.service';
 
-class BookService {
-    constructor (baseUrl = '/books')  {
+class BooksService {
+    constructor (baseUrl = '/api/books')  {
         this.book = createApiClient(baseUrl);
     }
 
@@ -30,4 +30,4 @@ class BookService {
     }
 }
 
-export default new BookService();
+export default new BooksService();

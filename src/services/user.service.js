@@ -1,7 +1,7 @@
 import createApiClient from './api.service';
 
-class UserService {
-    constructor (baseUrl = '/users')  {
+class UsersService {
+    constructor (baseUrl = '/api/users')  {
         this.user = createApiClient(baseUrl);
     }
 
@@ -30,4 +30,4 @@ class UserService {
     }
 }
 
-export default new UserService();
+export default new UsersService();

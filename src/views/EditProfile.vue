@@ -21,7 +21,7 @@ const user = ref({
 id.value = route.params.id;
 
 onMounted(() => {
-    axios.get(import.meta.env.VITE_SERVER_URL + `users/${id.value}`)
+    axios.get(import.meta.env.VITE_SERVER_URL + `api/users/${id.value}`)
         .then(res => {
             data.value = res.data;
             user.value = data.value;
@@ -46,7 +46,7 @@ const handleClosed = (e) => {
 }
 
 const handleDeleted = () => {
-    axios.delete(import.meta.env.VITE_SERVER_URL + `users/${id.value}`)
+    axios.delete(import.meta.env.VITE_SERVER_URL + `api/users/${id.value}`)
     .then(res => {
         alert("Đã xóa!")
         router.push('/admin');
@@ -84,7 +84,7 @@ const handleSubmit = (e) => {
         const data = new FormData();
         data.append("file", file);
 
-        axios.post(import.meta.env.VITE_SERVER_URL + 'file/upload', data)
+        axios.post(import.meta.env.VITE_SERVER_URL + 'api/file/upload', data)
             .then(res => {
                 if (res.status === 200) {
                     console.log(res.data);
@@ -101,7 +101,7 @@ const handleSubmit = (e) => {
         'permission': user.value.permission? 'admin': 'user',
     }
     
-    axios.post(import.meta.env.VITE_SERVER_URL + `users/${id.value}`, values)
+    axios.post(import.meta.env.VITE_SERVER_URL + `api/users/${id.value}`, values)
         .then(res => {
             if (res.status === 200) {
                 alert("Cập nhật thành công!");

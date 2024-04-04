@@ -3,26 +3,27 @@ import { RouterView } from 'vue-router'
 import { Header } from './components';
 import axios from 'axios';
 import { ref } from 'vue';
+import UsersService from './services/user.service';
 
-const auth = ref({})
 const email = ref('');
-    
-    axios.defaults.withCredentials = true;
-    axios.get(import.meta.env.VITE_SERVER_URL + "log/ad/token")
-        .then(res => {
-            if (res.data.Status === "Success") {
-                email.value = res.data.email;
-            }
-        })
-        .catch(err => console.log(err))
+const auth = ref({});    
+    // axios.defaults.withCredentials = true;
+    // axios.get(import.meta.env.VITE_SERVER_URL + "api/log/ad/token")
+    //     .then(res => {
+    //         if (res.data.Status === "Success") {
+    //             email.value = res.data.email;
+    //         }
+    //     })
+    //     .catch(err => console.log(err))
+    //     auth.value = email.value.isNotEmpty() && await UsersService.getOne(email.value);
+    // axios.get(import.meta.env.VITE_SERVER_URL + `users/${email.value}`)
+    //     .then(res => {
+    //         if (res.status === 200) {
+    //             auth.value = res.data;
+    //         } else { console.log(res.status); }
+    //     })
+    //     .catch(err => console.log(err))
 
-    axios.get(import.meta.env.VITE_SERVER_URL + `users/${email.value}`)
-        .then(res => {
-            if (res.status === 200) {
-                auth.value = res.data;
-            } else { console.log(res.status); }
-        })
-        .catch(err => console.log(err))
 </script>
 
 <template>

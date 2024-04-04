@@ -17,7 +17,7 @@ const handleClosed = (e) => {
 }
 
 const handleDeleted = (e) => {
-   axios.delete(import.meta.env.VITE_SERVER_URL + `${props.item.email? 'users': 'books'}/${props.item._id}`)
+   axios.delete(import.meta.env.VITE_SERVER_URL + `${props.item.email? 'api/users': 'api/books'}/${props.item._id}`)
     .then(res => {
         alert("Đã xóa!")
         window.location.reload();

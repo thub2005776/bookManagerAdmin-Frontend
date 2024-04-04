@@ -20,14 +20,14 @@ const user = ref({
 const borrowedBooks = ref()
 
 onMounted(() => {
-    axios.get(import.meta.env.VITE_SERVER_URL + `users/${id.value}`)
+    axios.get(import.meta.env.VITE_SERVER_URL + `api/users/${id.value}`)
         .then(res => {
             data.value = res.data;
             user.value = data.value;
         })
         .catch(err => console.log(err));
 
-    axios.get(import.meta.env.VITE_SERVER_URL + `borrowedBooks/${id.value}`)
+    axios.get(import.meta.env.VITE_SERVER_URL + `api/borrowedBooks/${id.value}`)
         .then(res => {
             data.value = res.data;
             borrowedBooks = data.value;

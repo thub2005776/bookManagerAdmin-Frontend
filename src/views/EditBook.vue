@@ -15,7 +15,7 @@ const stored = ref(0);
 id.value = route.params.id;
 
 onMounted(() => {
-    axios.get(import.meta.env.VITE_SERVER_URL + `books/${id.value}`)
+    axios.get(import.meta.env.VITE_SERVER_URL + `api/books/${id.value}`)
         .then(res => {
             data.value = res.data;
 
@@ -54,7 +54,7 @@ const handleSubmit = async (e) => {
         const data = new FormData();
         data.append("file", file);
 
-        axios.post(import.meta.env.VITE_SERVER_URL + 'file/upload', data)
+        axios.post(import.meta.env.VITE_SERVER_URL + 'api/file/upload', data)
             .then(res => {
                 if (res.status === 200) {
                     console.log(res.data);
@@ -63,7 +63,7 @@ const handleSubmit = async (e) => {
             .catch(err => console.log(err))
     }
 
-    axios.post(import.meta.env.VITE_SERVER_URL + `books/${id.value}`, values)
+    axios.post(import.meta.env.VITE_SERVER_URL + `api/books/${id.value}`, values)
         .then(res => {
             if (res.status === 200) {
                 alert("Cập nhật thành công!");
