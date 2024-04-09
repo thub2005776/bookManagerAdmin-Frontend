@@ -11,16 +11,14 @@ axios.get(import.meta.env.VITE_SERVER_URL + "api/log/ad/token")
     .then(res => {
         if (res.data.Status === "Success") {
             email.value = res.data.email;
-
+            axios.get(import.meta.env.VITE_SERVER_URL + `api/users/email/${email.value}`)
+                .then(res => {
+                    if (res.status === 200) {
+                        auth.value = res.data;
+                    } else { console.log(res.status); }
+                })
+                .catch(err => console.log(err))
         }
-    })
-    .catch(err => console.log(err))
-
-axios.get(import.meta.env.VITE_SERVER_URL + `api/users/${email.value}`)
-    .then(res => {
-        if (res.status === 200) {
-            auth.value = res.data;
-        } else { console.log(res.status); }
     })
     .catch(err => console.log(err))
 

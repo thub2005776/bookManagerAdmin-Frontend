@@ -1,11 +1,12 @@
 <script setup>
-import { SideBar, Card, Notify, Statitics } from '../components'
+import { SideBar, Card, Notify } from '../components'
 import { ref } from 'vue';
-// import UsersService from './services/user.service';
-const users = ref([]);
 
-// users.value = await userService.getAll();
-// console.log(users.value);
+const props = defineProps({
+   auth: Object,
+});
+
+const users = ref([]);
 axios.get(import.meta.env.VITE_SERVER_URL + `api/users`)
    .then(res =>
       users.value = res.data
@@ -22,18 +23,19 @@ axios.get(import.meta.env.VITE_SERVER_URL + `api/books`)
 </script>
 
 <template>
-   <SideBar @event-name="handleDataFromChild"></SideBar>
-   <div class="p-4 sm:ml-44 ml-14">
-      <Card v-if="dataFromChild == '2'" :title="'Quản lý Sách'" :data="books"></Card>
-      <Card v-if="dataFromChild == '3'" :title="'Quản lý người dùng'" :data="users"></Card>
-      <Notify v-if="dataFromChild == '4'"></Notify>
-      <Statitics v-if="dataFromChild == '5'"></Statitics>
+   <div v-if="props.auth.email">
+      <SideBar @event-name="handleDataFromChild"></SideBar>
+      <div class="p-4 sm:ml-44 ml-14">
+         <Card v-if="dataFromChild == '2'" :title="'Quản lý Sách'" :data="books"></Card>
+         <Card v-if="dataFromChild == '3'" :title="'Quản lý người dùng'" :data="users"></Card>
+         <Notify v-if="dataFromChild == '4'"></Notify>
+      </div>
    </div>
+
 </template>
 
 <script>
 import axios from 'axios';
-import userService from '@/services/user.service';
 export default {
 
    data() {

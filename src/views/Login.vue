@@ -18,6 +18,7 @@ const handleSubmit = (e) => {
     .then(res => {
       if (res.data.permission === "admin") {
           router.push('/admin');
+          window.location.reload();
       } else {alert(res.data)}
     })
     .catch (err => console.log(err))

@@ -1,9 +1,24 @@
 <script setup>
-import { ref, watch } from 'vue';
-const props = defineProps({
-  auth: Object
-})
+import axios from 'axios';
+import { ref } from 'vue';
 
+const email = ref('');
+const auth = ref({});
+axios.defaults.withCredentials = true;
+axios.get("http://localhost:3000/api/log/ad/token")
+  .then(res => {
+    if (res.data.Status === "Success") {
+      email.value = res.data.email;
+      axios.get(`http://localhost:3000/api/users/email/${email.value}`)
+        .then(res => {
+          if (res.status === 200) {
+            auth.value = res.data;
+          } else { console.log(res.status); }
+        })
+        .catch(err => console.log(err))
+    }
+  })
+  .catch(err => console.log(err))
 
 </script>
 
@@ -14,9 +29,9 @@ const props = defineProps({
         <RouterLink to="/admin">
           <h3 class="self-center text-2xl font-extrabold whitespace-nowrap text-blue-500">Books - Admin</h3>
         </RouterLink>
-        <img v-if="!props"
+        <img v-if="auth && auth.email"
           class="w-10 h-10 me-10 rounded-full"
-        :src="`http://localhost:3000/${props.auth[0].img}`" alt="avatar">
+        :src="`http://localhost:3000/${auth.img}`" alt="avatar">
       </div>
     </nav>
   </div>

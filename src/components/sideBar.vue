@@ -1,9 +1,11 @@
 <script setup>
 import axios from 'axios';
+import router from '@/router';
 
 const logout = () => {
-   axios.get(import.meta.env.VITE_SERVER_URL + "log/ad/logout")
+   axios.get(import.meta.env.VITE_SERVER_URL + "api/log/ad/logout")
       .then(res => {
+         router.push('/');
          window.location.reload();
       }).catch(err => console.log(err));
 }
@@ -62,19 +64,6 @@ const logout = () => {
 
          </ul>
          <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
-            <li @click="() => sendDataToParent('5')">
-               <div
-                  class="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 hover:cursor-pointer dark:hover:bg-gray-700 dark:text-white group">
-                  <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 4v15a1 1 0 0 0 1 1h15M8 16l2.5-5.5 3 3L17.273 7 20 9.667" />
-                  </svg>
-                  <span class="ms-3 hidden sm:block">
-                     Số liệu thống kê
-                  </span>
-               </div>
-            </li>
             <li>
                <div @click="logout"
                   class="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 hover:cursor-pointer dark:hover:bg-gray-700 dark:text-white group">
