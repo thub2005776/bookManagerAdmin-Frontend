@@ -8,7 +8,6 @@ const email = ref('');
 const password = ref('');
 const repeatPassword = ref('');
 const address = ref('');
-const permission = ref(false);
 
 let uploaded = '';
 const handleChange = (e) => {
@@ -52,7 +51,8 @@ const handleSubmit = (e) => {
             "name": name.value,
             "email": email.value,
             "password": password.value,
-            "permission": permission.value ? 'admin' : 'user',
+            "address": address.value,
+            "permission": 'user',
         }
         let fileStatus = 0;
         if (file) {
@@ -141,11 +141,6 @@ const handleSubmit = (e) => {
                     <textarea type="password" id="address" v-model="address" @change="validation"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required ></textarea>
-                </div>
-                
-                <div class="mb-5">
-                    <input type="checkbox" class="rounded-sm" v-model="permission" />
-                    Admin
                 </div>
 
                 <div class="flex justify-center gap-4">

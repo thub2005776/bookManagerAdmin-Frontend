@@ -1,14 +1,16 @@
 import axios from "axios";
-const commanConfig = {
-    header: {
+
+const commonConfig = {
+    headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        withCredentials: true,
+
     },
 };
-
-export default (baseUrl) => {
+export default (baseURL) => {
     return axios.create({
-        baseUrl,
-        ...commanConfig,
+        baseURL,
+        ...commonConfig,
     });
 };

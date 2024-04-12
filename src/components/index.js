@@ -8,3 +8,5 @@ export { default as Notify } from './notify.vue'
 export { default as BookCard } from './bookCard.vue'
 export { default as Delete } from './delete.vue';
 export {default as NotifyItem} from './notifyItem.vue';
+export {default as Publisher} from './publisher.vue';
+export {default as PublisherItem} from './publisherItem.vue';

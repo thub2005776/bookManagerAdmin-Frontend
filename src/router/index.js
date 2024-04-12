@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
+import publisherService from '@/services/publisher.service';
+
+const publishers = await publisherService.getAll();
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,12 +22,29 @@ const router = createRouter({
       path: '/book/:id',
       name: 'bookedit',
       props:true,
-      component: () => import('../views/EditBook.vue')
+      component: () => import('../views/EditBook.vue'),
+      meta: {
+        publishers: publishers,
+      }
     },
     {
       path: '/book/add',
       name: 'bookadd',
-      component: () => import('../views/AddBook.vue')
+      component: () => import('../views/AddBook.vue'),
+      meta: {
+        publishers: publishers,
+      }
+    },
+    {
+      path: '/publisher/:id',
+      name: 'publisherEdit',
+      props:true,
+      component: () => import('../views/EditPublisher.vue')
+    },
+    {
+      path: '/publisher/add',
+      name: 'publisherAdd',
+      component: () => import('../views/AddPublisher.vue')
     },
     {
       path: '/profile/:id',

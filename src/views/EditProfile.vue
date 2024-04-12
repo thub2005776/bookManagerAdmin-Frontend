@@ -17,6 +17,7 @@ const user = ref({
     img: '',
     password: '',
     permission: '',
+    address: '',
 });
 id.value = route.params.id;
 
@@ -98,7 +99,7 @@ const handleSubmit = (e) => {
         'email': user.value.email,
         'img': file? file.name : user.value.img,
         'password': password.value.length > 0? password.value : user.value.password,
-        'permission': user.value.permission? 'admin': 'user',
+        'address': user.value.address,
     }
     
     axios.post(import.meta.env.VITE_SERVER_URL + `api/users/${id.value}`, values)
@@ -179,11 +180,12 @@ const handleSubmit = (e) => {
                         <p class="text-sm text-red-500 dark:text-red-600">{{ error.repeatPassword }}</p>
                 </div>
                 <div class="mb-5">
-                    <label for="permissrion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                       
+                    <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Nhập Địa chỉ
                     </label>
-                    <input type="checkbox" id="permission" v-model="user.permission" value="admin"
-                        class="rounded-md focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500" />  Admin
+                    <textarea type="password" id="address" v-model="user.address" 
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    ></textarea>
                 </div>
 
                 <button type="submit"

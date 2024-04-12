@@ -9,7 +9,7 @@ axios.get("http://localhost:3000/api/log/ad/token")
   .then(res => {
     if (res.data.Status === "Success") {
       email.value = res.data.email;
-      axios.get(`http://localhost:3000/api/users/email/${email.value}`)
+      axios.get(`http://localhost:3000/api/admin/email/${email.value}`)
         .then(res => {
           if (res.status === 200) {
             auth.value = res.data;

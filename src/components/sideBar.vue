@@ -6,20 +6,19 @@ const logout = () => {
    axios.get(import.meta.env.VITE_SERVER_URL + "api/log/ad/logout")
       .then(res => {
          router.push('/');
-         window.location.reload();
+         // window.location.reload();
       }).catch(err => console.log(err));
 }
 
 </script>
 
 <template>
-   <aside  id="separator-sidebar"
-      class="fixed top-16 left-0 z-40 w-fit h-screen transition-transform sm:translate-x-0"
+   <aside id="separator-sidebar" class="fixed top-16 left-0 z-40 w-fit h-screen transition-transform sm:translate-x-0"
       aria-label="Sidebar">
       <div
          class="h-full px-3 py-4 dark:border-t-[1px] dark:border-gray-700 overflow-y-auto bg-gray-50 dark:bg-gray-900">
          <ul class="space-y-2 font-medium">
-            <li @click="() => sendDataToParent('2')">
+            <li @click="() => sendDataToParent('1')">
                <div
                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 hover:cursor-pointer dark:hover:bg-gray-700 group">
                   <svg
@@ -30,6 +29,20 @@ const logout = () => {
                   </svg>
                   <span class="ms-3 hidden sm:block">
                      Sách
+                  </span>
+               </div>
+            </li>
+            <li @click="() => sendDataToParent('2')">
+               <div
+                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 hover:cursor-pointer dark:hover:bg-gray-700 group">
+                  <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                     <path fill-rule="evenodd"
+                        d="M4 4a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2v14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2V5a1 1 0 0 1-1-1Zm5 2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1Zm-5 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1Zm-3 4a2 2 0 0 0-2 2v3h2v-3h2v3h2v-3a2 2 0 0 0-2-2h-2Z"
+                        clip-rule="evenodd" />
+                  </svg>
+                  <span class="ms-3 hidden sm:block">
+                     Nhà xuất bản
                   </span>
                </div>
             </li>
@@ -72,7 +85,7 @@ const logout = () => {
                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M5 12h14M5 12l4-4m-4 4 4 4" />
                   </svg>
-                  <span class="ms-3 hidden sm:block" >
+                  <span class="ms-3 hidden sm:block">
                      Đăng xuất
                   </span>
                </div>
@@ -84,11 +97,11 @@ const logout = () => {
 
 <script>
 export default {
-  methods: {
-    sendDataToParent(e) {
-      const data = e;
-      this.$emit('event-name', data);
-    }
-  }
+   methods: {
+      sendDataToParent(e) {
+         const data = e;
+         this.$emit('event-name', data);
+      }
+   }
 }
 </script>

@@ -9,10 +9,12 @@ const data = ref({});
 const title = ref('');
 const category = ref('');
 const author = ref('');
+const publisher = ref('');
 const img = ref('');
 const excerpt = ref('');
 const stored = ref(0);
 id.value = route.params.id;
+const publishers = route.meta.publishers;
 
 onMounted(() => {
     axios.get(import.meta.env.VITE_SERVER_URL + `api/books/${id.value}`)
@@ -22,6 +24,7 @@ onMounted(() => {
             const values = data.value;
             title.value = values.title;
             category.value = values.category;
+            publisher.value = values.publisher;
             author.value = values.author;
             img.value = values.img;
             excerpt.value = values.excerpt;
@@ -45,6 +48,8 @@ const handleSubmit = async (e) => {
         'img': file ? file.name : img.value,
         'category': category.value,
         'author': author.value,
+        'pid': publisher.value._id,
+        'publisher': publisher.value.name,
         'excerpt': excerpt.value,
         'borrowedTimes': 0,
         'stored': stored.value,
@@ -111,6 +116,16 @@ const handleSubmit = async (e) => {
                             class="text-center shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-fit p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                             name="categories" id="categories">
                             <option v-for="item in categories" :key="item" :value="item">{{ item }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-5">
+                        <label for="publishers" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Nhà xuất bản
+                        </label>
+                        <select v-model="publisher"
+                            class="text-center shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-fit p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            name="publishers" id="publishers">
+                            <option v-for="item in publishers" :key="item._id" :value="item">{{ item.name }}</option>
                         </select>
                     </div>
                     <div class="mb-5">

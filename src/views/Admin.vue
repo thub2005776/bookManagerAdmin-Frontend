@@ -11,7 +11,7 @@ axios.get(import.meta.env.VITE_SERVER_URL + "api/log/ad/token")
     .then(res => {
         if (res.data.Status === "Success") {
             email.value = res.data.email;
-            axios.get(import.meta.env.VITE_SERVER_URL + `api/users/email/${email.value}`)
+            axios.get(import.meta.env.VITE_SERVER_URL + `api/admin/email/${email.value}`)
                 .then(res => {
                     if (res.status === 200) {
                         auth.value = res.data;

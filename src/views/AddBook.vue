@@ -1,10 +1,14 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
+const publishers = route.meta.publishers;
 const title = ref('');
 const category = ref('');
 const author = ref('');
+const publisher = ref('');
 const excerpt = ref('');
 const stored = ref(0);
 
@@ -23,6 +27,8 @@ const handleSubmit = (e) => {
         'img': file && file.name,
         'category': category.value,
         'author': author.value,
+        'pid': publisher._id,
+        'publisher': publisher.name,
         'excerpt': excerpt.value,
         'borrowedTimes': 0,
         'stored': stored.value,
@@ -96,6 +102,18 @@ const handleSubmit = (e) => {
                             name="categories" id="categories">
                             <option v-for="item in categories" :key="item" :value="`${item}`">
                                 {{ item }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-5">
+                        <label for="publishers" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Nhà xuất bản
+                        </label>
+                        <select v-model="publisher"
+                            class="text-center shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-fit p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            name="publishers" id="publishers">
+                            <option v-for="item in publishers" :key="item" :value="item">
+                                {{ item.name }}
                             </option>
                         </select>
                     </div>
