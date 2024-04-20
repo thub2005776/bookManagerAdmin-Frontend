@@ -19,7 +19,7 @@ const user = ref({
 
 
 
-const borrowedBooks = ref([]);
+var borrowedBooks = ref([]);
 const favorites = ref([]);
 onMounted(() => {
     axios.get(import.meta.env.VITE_SERVER_URL + `api/users/${id.value}`)
@@ -41,7 +41,7 @@ onMounted(() => {
     <div class="mt-5 text-green-700 dark:text-white">
         <h1 class="font-bold text-2xl text-center mb-6">Thông tin tài khoản</h1>
         <div class="lg:flex lg:gap-6 p-2 dark:bg-gray-800 ">
-            <div class="text-center">
+            <div class="lg:w-[35%] text-center">
                 <img class="mx-auto w-32 h-32 md:w-52 md:h-52 rounded-full p-1 border border-blue-300 dark:border-gray-600"
                     :src="`http://localhost:3000/${user.img}`" alt="avatar">
                 <p class="mb-2">{{ user.name }}</p>
