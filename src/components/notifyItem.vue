@@ -44,7 +44,7 @@ const handleChecked = (data) => {
                         {{ book.state }}
                     </span>
                     <span v-if="late > 0 || month > 0" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
-                        Thời hạn:{{  new Date(book.borrowDate).toLocaleDateString()  }}
+                        Thời hạn: {{  new Date(book.borrowDate).toLocaleDateString()  }}
                         - {{  new Date(returnDate).toLocaleDateString()  }}
                     </span>
                     <span v-if="late <= 0 && month <= 0" class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
