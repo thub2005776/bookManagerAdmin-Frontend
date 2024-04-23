@@ -46,7 +46,7 @@ const late = returnDate.getDate() - today.getDate();
                             class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-900 dark:text-gray-300">
                            {{ book.state }}
                         </span>
-                        <span v-if="late <= 0 && month <= 0"
+                        <span v-if="late <= 0 && month <= 0 && book.state != 'Đã trả'"
                             class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
                             Trễ hạn
                         </span>
